@@ -18,22 +18,27 @@ checks.hasAccess = function hasAccess(req, res, next)
 	if (req.isAuthenticated() && req.session.isAdmin)
 	{return next();}
 }
-
-adminFunctions.notLoggedIn = function notLoggedIn(req, res, next) {
+checks.notLoggedIn = function notLoggedIn(req, res, next) {
 		if (!req.isAuthenticated())
 		{return next();}
 		
 		res.redirect('/');
 }
 
-adminFunctions.signIn = function (req, res)
+pages.signIn = function (req, res)
 	{
 	res.render('signIn');
 	}
 
-adminFunctions.signOut = function (req, res)
+pages.signOut = function (req, res)
 	{
-	res.render('signOut');
+	req.logout();
+	res.redirect('/');
+	}
+
+posts.signIn = function (req, res)
+	{
+	res.redirect('/dashboard');
 	}
 
 module.exports = adminFunctions;

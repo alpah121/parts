@@ -51,8 +51,7 @@ router.get('/create', function(req, res) {
 
 
 
-router.get('/admin', admin.main);
+router.get('/dashboard', admin);
 
-router.get('/admin/sub', admin.sub);
 
 module.exports = router;
