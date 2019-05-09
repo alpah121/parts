@@ -5,10 +5,7 @@ var config = require('../config.json');
 
 var part = require('../models/part');
 
-function query(sql, callback)
-{
-	
-}
+
 
 router.get('/', function(req, res) {
 	res.render('home');
