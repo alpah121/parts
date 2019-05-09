@@ -33,25 +33,9 @@ router.get('/search', function(req, res) {
 	}
 });
 
-router.get('/create', function(req, res) {
-	part.find(function (err, parts) 
-		{
-		if (err) console.log(err);
-		res.render('dashboard', 
-			{
-			results: parts,
-			success: false,
-			errors: req.session.errors
-			});
-		req.session.errors = null;
-		});
-	
-	
-});
+router.post('/signIn', admin.checks.signIn, admin.posts.signIn)
 
-
-
-router.get('/dashboard', admin);
+router.get('/dashboard', admin.checks.hasAccess, admin.pages.dashboard);
 
 
 module.exports = router;
